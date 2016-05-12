@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    <!-- tag文件描述 -->
+  <description>Pager core library</description>
+   <!--  -->
+  <display-name>Pager core</display-name>
+  <!-- 版本 -->
+  <tlib-version>1.0</tlib-version>
+  <!-- tag短名称 -->
+  <short-name>pager-tags</short-name>
+  <uri>/pager-tags</uri>
+  
+   <!-- 定义标签 -->
+    <tag>
+    	<!-- 标签名 -->
+    	<name>pager</name>
+    	<!-- 标签处理类 -->
+    	<tag-class>org.alipp.qt.base.Pager</tag-class>
+    	<!-- 标签体为空  --> 
+    	<body-content>empty</body-content>
+    	<!-- 定义属性 -->
+    	<attribute>
+    		<!-- 属性名 -->
+    		<name>currentPage</name>
+    		<!-- 是否必填 -->
+    		<required>true</required>
+    		<!-- Run Time Expression Value: true(EL表达式) false(不能用EL表达式的) -->
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	
+    	<attribute>
+    		<name>pageSize</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	
+    	<attribute>
+    		<name>totalRecord</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	
+    	<attribute>
+    		<name>requestUrl</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	
+    	<attribute>
+    		<name>style</name>
+    		<required>false</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    </tag>
+</taglib>
