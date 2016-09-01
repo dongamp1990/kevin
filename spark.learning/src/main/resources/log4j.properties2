@@ -1,0 +1,29 @@
+log4j.rootLogger = stdout,INFO,DEBUG,E
+log4j.appender.stdout = org.apache.log4j.ConsoleAppender 
+log4j.appender.stdout.layout = org.apache.log4j.PatternLayout 
+log4j.appender.stdout.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss} [ %p ]  %m%n 
+log4j.appender.stdout.Threshold = INFO,DEBUG,ERROR
+log4j.appender.stdout.ImmediateFlush = TRUE 
+log4j.appender.stdout.Target = System.out 
+#\u8F93\u51FA\u5230\u6587\u4EF6
+log4j.appender.E = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.E.File = /opt/spark.job.run.log
+log4j.appender.E.Append = true
+log4j.appender.E.Threshold = ERROR
+log4j.appender.E.ImmediateFlush = TRUE
+log4j.appender.E.layout = org.apache.log4j.PatternLayout
+log4j.appender.E.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss} [ %p ]  %m%n
+
+log4j.appender.INFO.File = /opt/spark.job.run.log
+log4j.appender.INFO.Append = true
+log4j.appender.INFO.Threshold = info
+log4j.appender.INFO.ImmediateFlush = TRUE
+log4j.appender.INFO.layout = org.apache.log4j.PatternLayout
+log4j.appender.INFO.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss} [ %p ]  %m%n
+
+log4j.appender.DEBUG.File = /opt/spark.job.run.log
+log4j.appender.DEBUG.Append = true
+log4j.appender.DEBUG.Threshold = debug
+log4j.appender.DEBUG.ImmediateFlush = TRUE
+log4j.appender.DEBUG.layout = org.apache.log4j.PatternLayout
+log4j.appender.DEBUG.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss} [ %p ]  %m%n
