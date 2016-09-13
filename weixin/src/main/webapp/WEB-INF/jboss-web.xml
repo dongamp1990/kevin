@@ -1,0 +1,3 @@
+<jboss-web>
+	<context-root>wx</context-root>
+</jboss-web>

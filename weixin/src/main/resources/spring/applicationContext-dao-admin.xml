@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	                       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+	                       http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd 
+	                       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	default-lazy-init="true">
+	
+	<bean id="daoParent">
+		<property name="namedQueryBean" ref="namedQueryBean" />
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	
+<!-- 	<bean id="customerDAO" class="com.maxFun.weixin.dao.impl.CustomerDAOImpl" parent="daoParent"/> -->
+	
+<!-- 	<bean id="weixinDAO" class="com.maxFun.weixin.dao.impl.WeixinDAOImpl" parent="daoParent"/> -->
+	
+<!-- 	<bean id="enterpriseDAO" class="com.maxFun.weixin.dao.impl.EnterpriseDAOImpl" parent="daoParent"/> -->
+	
+<!-- 	<bean id="validationCodeDAO" class="com.maxFun.weixin.dao.impl.ValidationCodeDAOImpl" parent="daoParent"/> -->
+	
+<!-- 	<bean id="couponDAO" class="com.maxFun.weixin.dao.impl.CouponDAOImpl" parent="daoParent"/> -->
+	
+<!-- 	<bean id="oauthDAO" class="com.maxFun.security.dao.impl.OauthDAOImpl"> -->
+<!-- 		<property name="jdbcTemplate" ref="jdbcTemplate" /> -->
+<!-- 	</bean> -->
+</beans>
