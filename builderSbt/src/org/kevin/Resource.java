@@ -7,4 +7,4 @@ public class Resource {
 		InputStream inputStream = this.getClass().getResourceAsStream("/resources/" + fileName);
 		return inputStream;
 	}
-}
+} 

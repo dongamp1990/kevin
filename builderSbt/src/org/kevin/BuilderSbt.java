@@ -19,7 +19,7 @@ public class BuilderSbt {
 				System.out.println("第二个参数是否创建java目录");
 				System.exit(0);
 			}
-			if (args[0] != null) {
+			if (args[0] != null) { 
 				if (!"windows".equals(args[0]) && !"linux".equals(args[0])) {
 					System.out.println("输入错误仅支持:window或linux");
 					System.exit(0);
