@@ -3,6 +3,7 @@ package org.alipp.api.services;
 import java.util.List;
 
 import org.alipp.api.dao.AdminDao;
+import org.alipp.api.dao.UserDao;
 import org.alipp.api.domain.CustomerInfo;
 import org.alipp.api.domain.LevelCode;
 import org.alipp.api.domain.User;
@@ -17,7 +18,7 @@ public class AdminService extends BaseService{
 	private static Logger logger = LoggerFactory.getLogger(AdminService.class);
 	public User getUserByLoginName(String userName){
 		try {
-			User user = AdminDao.getUserByLoginName(userName);
+			User user = UserDao.getUserByLoginName(userName);
 			return user;
 		} catch (Exception e) {
 			logger.error("getUserByLoginName Error", e);
