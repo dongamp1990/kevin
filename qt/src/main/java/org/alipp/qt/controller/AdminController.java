@@ -22,15 +22,14 @@ public class AdminController extends BaseController {
 	private static Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
 	private AdminService adminservice;
-	@ActionKey("/admin/main")
+	@ActionKey("/admin")
 	public void main() {
-		render("main.jsp");
+		redirect("data_manager");
 		logger.info("测试");
 	}
 	
 	@ActionKey("/admin/data_manager")
 	public void dataManager() {
-//		render("index.jsp");
 		Integer currentPage = getPara("currentPage") == null ? 1 : getParaToInt("currentPage");
 		Integer pageSize = getPara("pageSize") == null ? 10 : getParaToInt("pageSize");
 		

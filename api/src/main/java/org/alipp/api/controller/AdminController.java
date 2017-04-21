@@ -23,10 +23,11 @@ public class AdminController extends BaseController {
 	
 	private AdminService adminservice;
 	
-	@ActionKey("/admin/main")
+	@ActionKey("/admin")
 	public void main() {
-		render("main.jsp");
-		logger.info("测试");
+//		render("data_manager.jsp");
+		redirect("/admin/data_manager");
+		logger.info("admin");
 	}
 	
 	@ActionKey("/admin/data_manager")

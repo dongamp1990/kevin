@@ -13,10 +13,12 @@ import com.jfinal.core.ActionKey;
 import com.jfinal.render.JsonRender;
 
 public class IndexController extends BaseController {
+	
 	@Clear
 	public void index() {
 		render("index.jsp");
 	}
+	
 	@Clear
 	public void search() {
 		String qqNumber = getPara("qqNumber");
@@ -38,7 +40,7 @@ public class IndexController extends BaseController {
 				String phoneNumber = info.get("phone_number").toString();
 				if (phoneNumber.length() >= 11) {
 					String start = phoneNumber.substring(0, 3);
-					String end = phoneNumber.substring(7, phoneNumber.length());
+					String end = phoneNumber.substring(phoneNumber.length() - 4, phoneNumber.length());
 					info.set("phone_number", start + "****" + end);
 				}else {
 					info.set("phone_number", "****");
