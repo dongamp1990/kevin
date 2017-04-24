@@ -25,14 +25,11 @@ public class AdminController extends BaseController {
 	
 	@ActionKey("/admin")
 	public void main() {
-//		render("data_manager.jsp");
 		redirect("/admin/data_manager");
-		logger.info("admin");
 	}
 	
 	@ActionKey("/admin/data_manager")
 	public void dataManager() {
-//		render("index.jsp");
 		Integer currentPage = getPara("currentPage") == null ? 1 : getParaToInt("currentPage");
 		Integer pageSize = getPara("pageSize") == null ? 10 : getParaToInt("pageSize");
 		
