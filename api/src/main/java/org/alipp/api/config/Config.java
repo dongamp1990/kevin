@@ -1,6 +1,7 @@
 package org.alipp.api.config;
 
 import org.alipp.api.controller.AdminController;
+import org.alipp.api.controller.MoveDownUrlParseController;
 import org.alipp.api.controller.IndexController;
 import org.alipp.api.domain.CustomerInfo;
 import org.alipp.api.domain.LevelCode;
@@ -30,6 +31,7 @@ public class Config extends JFinalConfig {
 	public void configRoute(Routes me) {
 		me.add("/", IndexController.class);
 		me.add("/admin/", AdminController.class, "WEB-INF/admin/");
+		me.add("/mv/", MoveDownUrlParseController.class, "WEB-INF/");
 	}
 
 	@Override

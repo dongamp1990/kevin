@@ -33,6 +33,7 @@ public class Encoder {
     }
 	
 	public static void main(String[] args)  {
-		System.out.println(encryptSHA("tiandao321"));
-	}
+		//
+
+    }
 }
