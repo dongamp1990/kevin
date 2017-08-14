@@ -10,12 +10,12 @@ import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
-public class QueueProducerTest {
+public class QueueProducerTestB {
 	public static void main(String[] args) {
 //		String brokerURL = "tcp://localhost:61616";
 //		String brokerURL = "tcp://192.168.177.197:51513";
-//		String brokerURL = "failover:(tcp://192.168.177.199:51510,tcp://192.168.177.198:51512,tcp://192.168.177.197:51513)?randomize=false";
-		String brokerURL = "failover:(tcp://127.0.0.1:6697,tcp://127.0.0.1:6698,tcp://127.0.0.1:6699)?randomize=false";
+		String brokerURL = "failover:(tcp://192.168.177.199:51510,tcp://192.168.177.198:51512,tcp://192.168.177.197:51513)?randomize=false";
+//		String brokerURL = "failover:(tcp://127.0.0.1:6697,tcp://127.0.0.1:6698,tcp://127.0.0.1:6699)?randomize=false";
 		//连接工厂
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("system", "manager", brokerURL);
         Connection connection = null;
@@ -31,7 +31,7 @@ public class QueueProducerTest {
         	MessageProducer producer = session.createProducer(destination);
         	TextMessage message = null;
         	for (int i = 0; i < 1000000000; i++) {
-				message = session.createTextMessage("生产者B第" + (i + 1) + "消息");
+				message = session.createTextMessage("生产者A第" + (i + 1) + "消息");
 				//发送消息
 				producer.send(message);
 				System.out.println("发送成功: " + message.getText());

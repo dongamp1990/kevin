@@ -15,8 +15,8 @@ public class QueueConsumerTest {
 
 	public static void main(String[] args) {
 		//连接工厂
-//		String brokerURL = "failover:(tcp://192.168.177.199:51510,tcp://192.168.177.198:51512,tcp://192.168.177.197:51513)?randomize=false";
-		String brokerURL = "failover:(tcp://127.0.0.1:6697,tcp://127.0.0.1:6698,tcp://127.0.0.1:6699)?randomize=false";
+		String brokerURL = "failover:(tcp://192.168.177.199:51510,tcp://192.168.177.198:51512,tcp://192.168.177.197:51513)?randomize=false";
+//		String brokerURL = "failover:(tcp://127.0.0.1:6697,tcp://127.0.0.1:6698,tcp://127.0.0.1:6699)?randomize=false";
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("system", "manager", brokerURL);
         Connection connection = null;
         try {
@@ -33,7 +33,7 @@ public class QueueConsumerTest {
 				if (message == null) {
 					break;
 				}
-				System.out.println("接收到的消息：" + message.getText());
+				System.out.println("消费者A接收到的消息：" + message.getText());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
