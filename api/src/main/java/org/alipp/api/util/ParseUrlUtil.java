@@ -20,8 +20,8 @@ public class ParseUrlUtil {
 	private static String _1080P_2 = "1080P";
 	
 	public static void main(String[] args) {
-		parseLOLDYTTURL("http://www.loldytt.com/Dianshiju/RMDMY/");
-//		parsePIAOVUrl("http://www.piaov.com/html/233/");
+//		parseLOLDYTTURL("http://www.loldytt.com/Zuixinmeiju/ZPWDWJ/");
+		parsePIAOVUrl("http://www.piaov.com/html/61/");
 	}
 	
 	/**
