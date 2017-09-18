@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option java_outer_classname = "OrderProto";
+message Order{
+	 string productName = 1;
+	 int32 createTimestmap = 2;
+	 string address = 3;
+}

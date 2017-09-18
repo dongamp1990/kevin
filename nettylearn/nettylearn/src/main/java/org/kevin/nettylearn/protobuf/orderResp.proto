@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+option java_outer_classname = "OrderRespProto";
+message OrderResp{
+	 int32 orderId = 1;
+}
