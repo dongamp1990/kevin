@@ -4,10 +4,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://code.alibabatech.com/schema/dubbo
-        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
-        ">
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<dubbo:application name="hello-world-app" />
+	<dubbo:application name="order_app" />
 
 	<!--zookeeper注册中心 -->
 	<dubbo:registry protocol="zookeeper" address="192.168.177.199:2181" />
@@ -15,20 +14,26 @@
 	<!--使用multicast广播注册中心暴露服务地址 -->
 <!-- 	<dubbo:registry address="multicast://224.5.6.7:1234" /> -->
 
-	<dubbo:protocol name="dubbo" port="20880" />
-
-	<!-- 和本地bean一样实现服务 -->
-	<bean id="demoService" class="org.kevin.dubboapi.impl.DemoServiceImpl" />
-
-	<dubbo:service interface="org.kevin.dubboapi.DemoService" ref="demoService"/>
-		
-	<bean id="callbackService" class="org.kevin.dubboapi.impl.CallbackServiceImpl"/>
+	<dubbo:protocol name="dubbo" port="20881" />
 	
-	<dubbo:service interface="org.kevin.dubboapi.CallbackService" ref="callbackService">
-		<dubbo:method name="addListener">
-        	<dubbo:argument index="1" callback="true" />
+	<bean id="orderService" class="org.kevin.dubboapi.impl.OrderServiceImpl" />
+	<dubbo:service interface="org.kevin.dubboapi2.OrderService" ref="orderService"/>
+	
+<!-- 	<dubbo:monitor protocol="dubbo" address="127.0.0.1:7070"/> -->
+	
+	<dubbo:monitor protocol="registry" />
+	<!-- 和本地bean一样实现服务 -->
+<!-- 	<bean id="demoService" class="org.kevin.dubboapi.impl.DemoServiceImpl" /> -->
+
+<!-- 	<dubbo:service interface="org.kevin.dubboapi.DemoService" ref="demoService"/> -->
+		
+<!-- 	<bean id="callbackService" class="org.kevin.dubboapi.impl.CallbackServiceImpl"/> -->
+	
+<!-- 	<dubbo:service interface="org.kevin.dubboapi.CallbackService" ref="callbackService"> -->
+<!-- 		<dubbo:method name="addListener"> -->
+<!--         	<dubbo:argument index="1" callback="true" /> -->
 <!-- 			也可以通过指定类型的方式 -->
 <!--         <dubbo:argument type="com.demo.CallbackListener" callback="true" /> -->
-    	</dubbo:method>
-	</dubbo:service>
+<!--     	</dubbo:method> -->
+<!-- 	</dubbo:service> -->
 </beans>  

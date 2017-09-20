@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-lazy-init="true">
+
+
+	<bean id="namedQueryBean" class="org.kevin.util.QueryDefinitionBean">
+		<property name="namedQueryMap">
+			<map>
+				<entry>
+					<key>
+						<value>GET_USER_LIST</value>
+					</key>
+					<value><![CDATA[
+						select user_name as name
+						from user
+                 	]]></value>
+				</entry>
+				
+				<entry>
+					<key>
+						<value>SAVE_USER</value>
+					</key>
+					<value><![CDATA[
+						insert into user(user_name)
+						values(:name)
+                 	]]></value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>
