@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@ComponentScan("org.kevin")
+//@ComponentScan("org.kevin")
 @EnableAutoConfiguration
-@ImportResource("classpath:spring/applicationContext-*.xml")
+@ImportResource({"classpath:spring/sprint-content.xml"})
 public class StartServer {
 	public static void main(String[] args) {
 		SpringApplication.run(StartServer.class, args);

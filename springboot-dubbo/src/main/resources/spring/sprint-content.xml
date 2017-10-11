@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd ">
+
+	<context:component-scan base-package="org.kevin" />
+
+	<!--这个bean是作为controller返回结果日志切面 -->
+	<bean id="responerResultLog" class="org.kevin.aop.ControllerResponseResultLog"/>
+	<aop:config>
+		<aop:aspect ref="responerResultLog">
+			<aop:pointcut id="addAllMethod" expression="execution(* org.kevin.controller.*.*(..))"/>
+			<aop:around method="printResultLog" pointcut-ref="addAllMethod" />
+		</aop:aspect>
+	</aop:config>
+	
+	<!-- CommonsRequestLoggingFilter -->
+	<!-- 导入xml文件 -->
+	<import resource="dubbo-provider.xml" />
+	<import resource="dubbo-consumer.xml" />
+	<import resource="applicationContext-jdbcNamedQuery-security.xml" />
+
+
+</beans>

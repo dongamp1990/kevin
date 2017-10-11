@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 
 import com.alibaba.dubbo.config.MonitorConfig;
 
-@Configuration
-@ConfigurationProperties(prefix = "spring.dubbo")
-@EnableAutoConfiguration
+//@Configuration
+//@ConfigurationProperties(prefix = "spring.dubbo")
+//@EnableAutoConfiguration
 public class DubboMonitorConfig {
 	
 	private MonitorConfig monitor;

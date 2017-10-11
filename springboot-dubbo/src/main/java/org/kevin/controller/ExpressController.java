@@ -2,9 +2,13 @@ package org.kevin.controller;
 
 import java.util.List;
 
+import org.kevin.dubboapi.domain.Order;
 import org.kevin.dubboapi.domain.User;
 import org.kevin.dubboapi2.DemoService;
+import org.kevin.dubboapi2.OrderService;
 import org.kevin.response.GenericResponseVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,8 +23,10 @@ public class ExpressController {
 	@Autowired
 	private DemoService demoService;
 	
-//	@Reference(version = "1.0.0")
-//	private OrderService orderService;
+	@Autowired
+	private OrderService orderService;
+	
+	private Logger log = LoggerFactory.getLogger("payLogger");
 	
 	@RequestMapping(path = "/express/user", method = {RequestMethod.POST}, consumes = "application/json", produces = "application/json")
 	public GenericResponseVO saveUser(@RequestBody User user) {
@@ -44,5 +50,11 @@ public class ExpressController {
 		System.out.println(version);
 		System.out.println(name);
 		return new GenericResponseVO("success");
+	}
+	
+	@RequestMapping(path = "/express/order", method = {RequestMethod.GET}, produces = "application/json")
+	public GenericResponseVO getOrder() {
+		Order order = orderService.getOrder();
+		return new GenericResponseVO(order);
 	}
 }

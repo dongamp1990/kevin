@@ -46,12 +46,26 @@ public class JDThread extends Thread {
 		while (true) {
 			try {
 				driver.findElements(By.id("choose-btn-ko")).get(0).click();
+				Thread.sleep(500L);
+				driver.findElements(By.id("saveConsigneeTitleDiv")).get(0).click();
+				Thread.sleep(500L);
 				driver.findElements(By.id("order-submit")).get(0).click();
+				Thread.sleep(500L);
+				if (driver.findElement(By.id("tryBtn")) != null) {
+					System.out.println("已售罄，抢购失败。");
+					driver.close();
+					System.exit(1);
+				}
 				System.out.println("抢购成功并且已下单！！");
 				break;
 			} catch (Exception e) {
+				driver.navigate().to(productUrl);
 				System.out.println("未抢购成功~~");
 			}
 		}
+	}
+	
+	public static void main(String[] args) {
+		 new JDThread("JD2", "https://item.jd.com/5001213.html").start();
 	}
 }

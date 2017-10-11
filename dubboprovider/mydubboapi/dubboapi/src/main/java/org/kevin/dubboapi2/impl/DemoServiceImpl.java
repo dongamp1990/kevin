@@ -40,6 +40,11 @@ public class DemoServiceImpl implements DemoService {
 			System.out.println("user_name: " + user.getName() + " age: " + user.getAge());
 		}
 	}
+
+	public Long saveUser(User user) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

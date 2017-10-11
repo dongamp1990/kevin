@@ -7,11 +7,10 @@ import org.kevin.dubboapi.domain.User;
 import org.kevin.dubboapi2.DemoService;
 import org.kevin.exception.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.alibaba.dubbo.config.annotation.Service;
-
-@Service(interfaceClass = org.kevin.dubboapi2.DemoService.class)
+@Component("demoService")
 public class DemoServiceImpl implements DemoService {
 	
 	@Autowired
@@ -50,7 +49,6 @@ public class DemoServiceImpl implements DemoService {
 	public Long saveUser(User user) throws Exception {
 		try {
 			Long id = this.userDAO.saveUser(user);
-			int i = 1/0;
 			return id;
 		} catch (Exception e) {
 			e.printStackTrace();
