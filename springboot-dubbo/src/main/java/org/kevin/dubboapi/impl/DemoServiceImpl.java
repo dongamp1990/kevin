@@ -2,6 +2,7 @@ package org.kevin.dubboapi.impl;
 
 import java.util.List;
 
+import org.kevin.dao.TestDAO;
 import org.kevin.dao.UserDAO;
 import org.kevin.dubboapi.domain.User;
 import org.kevin.dubboapi2.DemoService;
@@ -15,6 +16,9 @@ public class DemoServiceImpl implements DemoService {
 	
 	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired
+	private TestDAO testDAO;
 	
 	public void sayHi() {
 		System.out.println("caall my sayhi method");
@@ -31,7 +35,7 @@ public class DemoServiceImpl implements DemoService {
 
 	public List<User> getUserList() {
 		try {
-			return userDAO.getUserList();
+			return testDAO.getUserList();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -53,6 +57,15 @@ public class DemoServiceImpl implements DemoService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ServiceException("ServiceException", "S01", "saveUser Error");
+		}
+	}
+	
+	public List<User> testDaoGetUserList() {
+		try {
+			return testDAO.getUserList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }

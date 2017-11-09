@@ -59,6 +59,7 @@ public class RequestLogginFilter implements Filter {
 			Common.LOG.info("RequestURI: {}, Params: {}",
 					((HttpServletRequest) request).getRequestURI(), data.toString());
 		}
+		response.getOutputStream().write("test".getBytes());
 	}
 
 	@Override

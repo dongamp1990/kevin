@@ -14,18 +14,37 @@
 	<context:component-scan base-package="org.kevin" />
 
 	<!--这个bean是作为controller返回结果日志切面 -->
-	<bean id="responerResultLog" class="org.kevin.aop.ControllerResponseResultLog"/>
-	<aop:config>
-		<aop:aspect ref="responerResultLog">
-			<aop:pointcut id="addAllMethod" expression="execution(* org.kevin.controller.*.*(..))"/>
-			<aop:around method="printResultLog" pointcut-ref="addAllMethod" />
-		</aop:aspect>
-	</aop:config>
+<!-- 	<bean id="responerResultLog" class="org.kevin.aop.ControllerResponseResultLog"/> -->
+<!-- 	<bean id="requestLog" class="org.kevin.aop.ControllerRequestLog"/> -->
 	
+<!-- 	<aop:config> -->
+<!-- 		<aop:pointcut id="addAllMethod" expression="execution(* org.kevin.controller.*.*(..))"/> -->
+<!-- 		<aop:aspect ref="responerResultLog"> -->
+<!-- 			<aop:around method="printResultLog" pointcut-ref="addAllMethod" /> -->
+<!-- 		</aop:aspect> -->
+<!-- 		<aop:aspect ref="requestLog"> -->
+<!-- 			<aop:around method="printResultLog" pointcut-ref="addAllMethod" /> -->
+<!-- 		</aop:aspect> -->
+<!-- 		<aop:aspect ref="requestLog"> -->
+<!-- 			<aop:pointcut id="addAllMethod" expression="execution(* org.kevin.controller.*.*(..))"/> -->
+<!-- 			<aop:around method=""/> -->
+<!-- 		</aop:aspect> -->
+<!-- 	</aop:config> -->
+	
+	 <!-- 包装通知，指定切点 -->
+<!--     <bean id="matchBeforeAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor"> -->
+<!--         <property name="pointcut"> -->
+<!--             <ref bean="addAllMethod" /> -->
+<!--         </property> -->
+<!--         <property name="advice"> -->
+<!--             <ref bean="requestLog" /> -->
+<!--         </property> -->
+<!--     </bean> -->
+    
 	<!-- CommonsRequestLoggingFilter -->
 	<!-- 导入xml文件 -->
-	<import resource="dubbo-provider.xml" />
-	<import resource="dubbo-consumer.xml" />
+<!-- 	<import resource="dubbo-provider.xml" /> -->
+<!-- 	<import resource="dubbo-consumer.xml" /> -->
 	<import resource="applicationContext-jdbcNamedQuery-security.xml" />
 
 

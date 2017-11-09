@@ -12,15 +12,15 @@ public class SpringConfig {
 	 * 
 	 * @return
 	 */
-	@Bean
-	public FilterRegistrationBean someFilterRegistration() {
-		FilterRegistrationBean registration = new FilterRegistrationBean();
-		registration.setFilter(requestLogginFilter());
-		registration.addUrlPatterns("/*");
-		// registration.addInitParameter("paramName", "paramValue");
-		registration.setName("commonsRequestLoggingFilter");
-		return registration;
-	}
+//	@Bean
+//	public FilterRegistrationBean someFilterRegistration() {
+//		FilterRegistrationBean registration = new FilterRegistrationBean();
+//		registration.setFilter(requestLogginFilter());
+//		registration.addUrlPatterns("/*");
+//		// registration.addInitParameter("paramName", "paramValue");
+//		registration.setName("commonsRequestLoggingFilter");
+//		return registration;
+//	}
 	
 //	@Bean
 //	public FilterRegistrationBean responseFilterRegistration() {
@@ -32,8 +32,8 @@ public class SpringConfig {
 //		return registration;
 //	}
 
-	@Bean
-	public RequestLogginFilter requestLogginFilter() {
-		return new RequestLogginFilter();
-	}
+//	@Bean
+//	public RequestLogginFilter requestLogginFilter() {
+//		return new RequestLogginFilter();
+//	}
 }

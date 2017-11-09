@@ -13,7 +13,6 @@
 	<dubbo:registry protocol="zookeeper" address="${zookeeper_url}" />
 
 	<dubbo:protocol name="dubbo" port="${dubbo_port}" />
-	
 	<!-- 监控中心从注册中心里面找 -->
 <!-- 	<dubbo:monitor protocol="registry" /> -->
 
@@ -23,6 +22,6 @@
 	<!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
 	<!-- <dubbo:reference id="demoService" interface="org.kevin.dubboapi2.DemoService" /> -->
 
-	<dubbo:service interface="org.kevin.dubboapi2.DemoService" ref="demoService" />
+	<dubbo:service interface="org.kevin.dubboapi2.DemoService" ref="demoService"/>
 
 </beans>

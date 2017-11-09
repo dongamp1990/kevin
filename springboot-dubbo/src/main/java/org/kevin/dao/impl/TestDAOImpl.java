@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.kevin.dao.UserDAO;
+import org.kevin.dao.TestDAO;
 import org.kevin.das.jdbc.impl.AbstractJdbcDaoImpl;
 import org.kevin.dubboapi.domain.User;
 import org.kevin.exception.BaseException;
@@ -12,6 +12,7 @@ import org.kevin.exception.DaoException;
 import org.kevin.util.BeanUtil;
 import org.kevin.util.QueryDefinitionBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -19,12 +20,13 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserDAOImpl extends AbstractJdbcDaoImpl implements UserDAO {
+public class TestDAOImpl extends AbstractJdbcDaoImpl implements TestDAO {
+
 	@Autowired
 	private QueryDefinitionBean namedQueryBean;
 	
 	@Autowired
-	public UserDAOImpl(JdbcTemplate jdbcTemplate) {
+	public TestDAOImpl(@Qualifier("jdbcTemplateOther") JdbcTemplate jdbcTemplate) {
 		setJdbcTemplate(jdbcTemplate);
 	}
 	
@@ -60,4 +62,5 @@ public class UserDAOImpl extends AbstractJdbcDaoImpl implements UserDAO {
 		this.executeJdbcUpdate(sql, param, keyHolder);
 		return (Long) keyHolder.getKey();
 	}
+
 }

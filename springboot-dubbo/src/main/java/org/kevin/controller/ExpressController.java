@@ -23,8 +23,8 @@ public class ExpressController {
 	@Autowired
 	private DemoService demoService;
 	
-	@Autowired
-	private OrderService orderService;
+//	@Autowired
+//	private OrderService orderService;
 	
 	private Logger log = LoggerFactory.getLogger("payLogger");
 	
@@ -52,9 +52,17 @@ public class ExpressController {
 		return new GenericResponseVO("success");
 	}
 	
-	@RequestMapping(path = "/express/order", method = {RequestMethod.GET}, produces = "application/json")
-	public GenericResponseVO getOrder() {
-		Order order = orderService.getOrder();
-		return new GenericResponseVO(order);
+//	@RequestMapping(path = "/express/order", method = {RequestMethod.GET}, produces = "application/json")
+//	public GenericResponseVO getOrder() {
+//		Order order = orderService.getOrder();
+//		return new GenericResponseVO(order);
+//	}
+	
+	
+	@RequestMapping(path = "/express/test5", method = {RequestMethod.GET}, produces = "application/json")
+	public GenericResponseVO test5() {
+		List<User> userList = demoService.getUserList();
+		return new GenericResponseVO(userList);
 	}
+	
 }
