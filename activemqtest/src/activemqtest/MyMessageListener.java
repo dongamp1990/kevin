@@ -5,9 +5,8 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
-public class MyMessageListener implements MessageListener{
+public class MyMessageListener implements MessageListener {
 
-	@Override
 	public void onMessage(Message message) {
 		try {
 			TextMessage textMsg = (TextMessage) message;
@@ -16,4 +15,5 @@ public class MyMessageListener implements MessageListener{
 			e.printStackTrace();
 		}
 	}
+
 }

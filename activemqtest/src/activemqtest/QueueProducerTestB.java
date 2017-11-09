@@ -30,7 +30,7 @@ public class QueueProducerTestB {
         	//创建生产者
         	MessageProducer producer = session.createProducer(destination);
         	TextMessage message = null;
-        	for (int i = 0; i < 1000000000; i++) {
+        	for (int i = 0; i < 10; i++) {
 				message = session.createTextMessage("生产者A第" + (i + 1) + "消息");
 				//发送消息
 				producer.send(message);

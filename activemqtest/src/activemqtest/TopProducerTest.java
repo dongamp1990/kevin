@@ -12,13 +12,14 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class TopProducerTest {
 	public static void main(String[] args) {
-		String brokerURL = "tcp://localhost:61616";
+//		String brokerURL = "tcp://localhost:61616";
+//		String brokerURL = "failover:(tcp://127.0.0.1:6697,tcp://127.0.0.1:6698,tcp://127.0.0.1:6699)?randomize=false";
 		//连接工厂
-        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("system", "manager", brokerURL);
+//        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("system", "manager", brokerURL);
         Connection connection = null;
         try {
         	//创建连接
-        	connection = connectionFactory.createConnection();
+        	connection = ActiveMQUtil.openConnection();
         	connection.start();
         	//创建会话，没有事物，自动回应
         	Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
@@ -27,10 +28,11 @@ public class TopProducerTest {
         	//创建生产者
         	MessageProducer producer = session.createProducer(destination);
         	TextMessage message = null;
-        	for (int i = 20; i < 30; i++) {
-				message = session.createTextMessage("第" + (i + 1) + "topic消息");
+        	for (int i = 0; i < 5; i++) {
+				message = session.createTextMessage("第 " + (i + 1) + " topic消息");
 				//发送消息
 				producer.send(message);
+				Thread.sleep(1000L);
 				System.out.println("发送成功: " + message.getText());
 			}
 		} catch (Exception e) {

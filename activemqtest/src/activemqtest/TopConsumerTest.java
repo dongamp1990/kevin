@@ -14,7 +14,8 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 public class TopConsumerTest {
 	public static void main(String[] args) {
 		//连接工厂
-		String brokerURL = "tcp://localhost:61616";
+//		String brokerURL = "tcp://localhost:61616";
+		String brokerURL = "failover:(tcp://127.0.0.1:6697,tcp://127.0.0.1:6698,tcp://127.0.0.1:6699)?randomize=false";
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("system", "manager", brokerURL);
         Connection connection = null;
         try {
