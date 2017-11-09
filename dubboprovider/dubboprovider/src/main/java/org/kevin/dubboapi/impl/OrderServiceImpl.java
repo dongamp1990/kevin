@@ -2,6 +2,7 @@ package org.kevin.dubboapi.impl;
 
 import org.kevin.dubboapi.domain.Order;
 import org.kevin.dubboapi2.OrderService;
+import org.springframework.stereotype.Component;
 
 public class OrderServiceImpl implements OrderService {
 
