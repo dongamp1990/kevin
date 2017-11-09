@@ -1,13 +1,13 @@
 package com.alipp.weixin.util;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * 通用方法，用于转换xml到bean，或者bean 到xml
@@ -103,4 +103,20 @@ public class JacksonUtils {
         String string = xml.writeValueAsString(bean);
         return string;
     }
+    
+    /**
+     * @param json 
+     * @param Class<T>
+     * @param <T>
+     * @return
+     * @throws IOException
+     */
+	public static <T> T json2Object(String json, Class<T> cls) {
+		try {
+			return JacksonMapper.getObjectMapper().readValue(json, cls);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

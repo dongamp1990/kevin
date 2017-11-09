@@ -35,6 +35,8 @@ public class WeixinUtil {
 	private static Map<String, String> tokenMap = new HashMap<String, String>();
 	
 	static {
+		tokenMap.put("access_token", "EthhOXlDv2fjlQNvHHGy1We9gxs-e11PUKLqRg10QAuZOAUAVCQFbaxLprystpl2hmMjiHHMHOA_VgppyGFakKaaB2xhetITCQvD4RT8ZpJ4JG0Ri2jS9xFdZg3WUTZbVQRfAFARMN");
+		tokenMap.put("date", System.currentTimeMillis() + "");
 		APPID = PropertyUtil.get("weixin.appid");
 		SECRET = PropertyUtil.get("weixin.secret");
 		GET_ACCESSTOKEN_URL = PropertyUtil.get("weixin.get_accesstoken_url");
@@ -69,8 +71,7 @@ public class WeixinUtil {
 			//{"access_token":"ACCESS_TOKEN","expires_in":7200} 正常情况返回
 			//{"errcode":40013,"errmsg":"invalid appid"} 错误时微信会返回错误码等信息
 			String result = HttpUtil.get(GET_ACCESSTOKEN_URL);
-			
-			Map<String, Object> map = JSONUtil.object2Map(result);
+			Map<String, String> map = JacksonUtils.json2Object(result, Map.class);
 			if (map == null) {
 				throw new Exception("getAccessToken fail");
 			}

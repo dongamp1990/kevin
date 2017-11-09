@@ -2,31 +2,24 @@ package com.alipp.weixin.strategy;
 
 import java.util.Map;
 
-import javax.inject.Named;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import com.alipp.weixin.constant.EventType;
 
-@Named
-public class UnsubscribeEventMessage implements EventMessage {
+@Component
+public class UnsubscribeEventMessage extends EventMessage {
 
 //	@Inject
 //	private CustomerService customerService;
-	private static Logger logger = LoggerFactory.getLogger(UnsubscribeEventMessage.class);
-
 	@Override
-	public String processEventMessage(Map<String, String> requestMap) {
-		logger.info("{}",requestMap);
-		String openId = requestMap.get("FromUserName");
-
+	public String processMessage(Map<String, String> requestMap) {
+		logger.info("UnsubscribeEventMessage:{}",requestMap);
+//		String openId = requestMap.get("FromUserName");
 //		try {
 //			this.customerService.unSubscribeWeixin(openId);
 //		} catch (ServiceException e) {
 //			logger.error("processEventMessage", e.getErrorVO());
 //		}
-		
 		return null;
 	}
 

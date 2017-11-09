@@ -27,7 +27,6 @@ public class CustomMsgUtil {
 			jsonObject.put("touser", touser);
 			jsonObject.put("msgtype", CustomMsgType.TEXT);
 			jsonObject.put("text", new JSONObject().put("content", content));
-			
 			String url = customeMsgSendUrl.replace("ACCESS_TOKEN", WeixinUtil.getAccessToken());
 			String requestStr = jsonObject.toString();
 			String result = HttpUtil.post(url, requestStr, CommonConstant.APPLICATION_JSON);

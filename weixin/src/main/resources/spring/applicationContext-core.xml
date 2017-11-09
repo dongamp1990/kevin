@@ -15,7 +15,7 @@
 	<bean id="propertyBase" class="com.alipp.weixin.util.PropertyUtil">
 	    <property name="locations">
 	    <list>
-	        <value>classpath*:properties/common/*.properties</value>
+	        <value>classpath*:common/*.properties</value>
 	    </list>
 		</property>
 		<property name="ignoreUnresolvablePlaceholders" value="true" />

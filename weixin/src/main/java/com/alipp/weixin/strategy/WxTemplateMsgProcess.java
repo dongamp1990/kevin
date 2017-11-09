@@ -4,19 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import com.alipp.weixin.constant.CommonConstant;
+import com.alipp.weixin.domain.SendWxTemplateMsgRequest;
 import com.alipp.weixin.domain.WeixinInfo;
 import com.alipp.weixin.domain.WeixinTemplateMsg;
 import com.alipp.weixin.domain.WxTemplateMsg;
 import com.alipp.weixin.domain.WxTemplateMsgValue;
 import com.alipp.weixin.util.JSONUtil;
 import com.alipp.weixin.util.WeixinUtil;
-import com.alipp.weixin.ws.request.SendWxTemplateMsgRequest;
 
 public class WxTemplateMsgProcess {
 
-	private static Logger logger = LoggerFactory.getLogger(WxTemplateMsgProcess.class);
+	private static Logger logger = CommonConstant.LOGGER;
 	
 	public static Map<String, Object> processMessage(SendWxTemplateMsgRequest param, WeixinInfo weixinInfo,
 			WeixinTemplateMsg weixinTemplateMsg) throws Exception {

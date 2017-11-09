@@ -2,24 +2,22 @@ package com.alipp.weixin.strategy;
 
 import java.util.Map;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import com.alipp.weixin.constant.EventType;
 import com.alipp.weixin.domain.WeixinMassMsgSendHistory;
 
-@Named
-public class MassSendJobFinishEventMessage implements EventMessage {
+@Component
+public class MassSendJobFinishEventMessage extends EventMessage {
 
 //	@Inject
 //	private WeixinService weixinService;
     private static Logger logger = LoggerFactory.getLogger(MassSendJobFinishEventMessage.class);
 
 	@Override
-	public String processEventMessage(Map<String, String> requestMap) {
+	public String processMessage(Map<String, String> requestMap) {
 		logger.info("{}",requestMap);
 		//报文格式
 		//<xml>

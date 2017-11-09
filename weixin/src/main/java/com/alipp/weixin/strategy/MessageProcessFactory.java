@@ -1,94 +1,104 @@
 package com.alipp.weixin.strategy;
 
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Map;
 
-import javax.inject.Named;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import com.alipp.weixin.constant.CommonConstant;
 import com.alipp.weixin.constant.EventType;
 import com.alipp.weixin.constant.MsgType;
-import com.alipp.weixin.util.SpringUtil;
+import com.alipp.weixin.domain.TextMessageResp;
+import com.alipp.weixin.util.JacksonUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
-@Named
+@Component
 public class MessageProcessFactory {
-
-	public static void processMessage(MsgType msgType, Map<String, String> requestMap, 
-			OutputStream outputStream) {
-		
-		//收到所有推送，都返回空串，后面使用客服接口给微信用户发送消息
-		response("", outputStream);
-		
+	
+	@Autowired
+	private TextMessage textMessage;
+	@Autowired
+	private SubscribeEventMessage subscribeEventMessage;
+	@Autowired
+	private UnsubscribeEventMessage unsubscribeEventMessage;
+	@Autowired
+	private ScanEventMessage scanEventMessage;
+	@Autowired
+	private TemplateSendJobFinishEventMessage templateSendJobFinishEventMessage;
+	@Autowired
+	private MassSendJobFinishEventMessage massSendJobFinishEventMessage;
+	private Logger logger = CommonConstant.LOGGER;
+	
+	public String processMessage(MsgType msgType, Map<String, String> requestMap) {
+		String result = null;
+		String fromUserName = requestMap.get("FromUserName");
+		String toUserName = requestMap.get("ToUserName");
 		//事件推送
 		if (MsgType.EVENT == msgType) {
-			
 			String event = requestMap.get("Event");
-			
 			EventMessage eventMessage = null;
-			
 			switch (event) {
 				case EventType.SUBSCRIBE:
 					//关注
-					eventMessage  = (EventMessage) SpringUtil.getBeanById("subscribeEventMessage");
+					eventMessage  = (EventMessage) subscribeEventMessage;
 					break;
 				case EventType.UNSUBSCRIBE:
 					//取消关注
-					eventMessage = (EventMessage) SpringUtil.getBeanById("unsubscribeEventMessage");
+					eventMessage = (EventMessage) unsubscribeEventMessage;
 					break;
 				case EventType.SCAN:
 					//扫描二维码
-					eventMessage = (EventMessage) SpringUtil.getBeanById("scanEventMessage");
+					eventMessage = (EventMessage) scanEventMessage;
 					break;
 				case EventType.VIEW:
 					System.out.println(requestMap.toString());
 					break;
 				case EventType.TEMPLATESENDJOBFINISH:
 					//  处理模板短信任务完成推送
-					eventMessage = (EventMessage) SpringUtil.getBeanById("templateSendJobFinishEventMessage");
+					eventMessage = (EventMessage) massSendJobFinishEventMessage;
 					break;
 				case EventType.MASSSENDJOBFINISH:
 					//  处理模板短信任务完成推送
-					eventMessage = (EventMessage) SpringUtil.getBeanById("massSendJobFinishEventMessage");
+					eventMessage = (EventMessage) massSendJobFinishEventMessage;
 					break;
 				default:
-					System.out.println(requestMap.toString());
+					logger.info("收到其他事件消息: {}", requestMap.toString());
 					break;
 			}
-			
 			if (eventMessage != null) {
-				eventMessage.processEventMessage(requestMap);
+				result = eventMessage.processMessage(requestMap);
 			}
-			
+		}else if (MsgType.TEXT == msgType) {
+			//  处理模板短信任务完成推送
+			result = textMessage.processMessage(requestMap);
 		}else {
 			//收到其他消息 
-			System.out.println("收到其他消息" + requestMap.toString());
+			logger.info("收到其他消息: {}", requestMap.toString());
+			result = initTestResoXml(fromUserName, toUserName, "好的，好的，已收到!");
 		}
+		return result;
 	}
 	
 	/**
-	 * 返回数据
-	 * @param responseStr
-	 * @param outputStream
+	 * @param toUserName 接收者
+	 * @param fromUserName 发送者
+	 * @param respContent 发送内容
+	 * @return xml
 	 */
-	private static void response(String responseStr, OutputStream outputStream) {
-		if (responseStr == null) {
-			return;
-		}
-		
+	public static String initTestResoXml(String toUserName, String fromUserName, String respContent) {
+		TextMessageResp resp = new TextMessageResp();
+		resp.setContent(respContent);
+		resp.setMsgType(MsgType.TEXT.getTypeStr());
+		resp.setToUserName(toUserName);
+		resp.setFromUserName(fromUserName);
+		resp.setCreateTime(System.currentTimeMillis() / 1000);
+		String xml = null;
 		try {
-			outputStream.write(responseStr.getBytes("UTF-8"));
-			outputStream.close();
-		} catch (IOException e) {
+			xml = JacksonUtils.beanToXml(resp);
+		} catch (JsonProcessingException e) {
 			e.printStackTrace();
-			if (outputStream != null) {
-				try {
-					outputStream.close();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
 		}
-		
+		return xml;
 	}
-	
 }

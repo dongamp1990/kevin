@@ -1,4 +1,4 @@
-package com.alipp.weixin.ws.request;
+package com.alipp.weixin.domain;
 
 import java.io.IOException;
 import java.util.Map;

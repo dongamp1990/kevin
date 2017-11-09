@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import javax.inject.Inject;
-import javax.inject.Named;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -18,10 +18,10 @@ import com.alipp.weixin.util.ListTranscoder;
 import com.alipp.weixin.util.SerializingUtil;
 import com.alipp.weixin.util.StringUtil;
 
-@Named
+@Service
 public class RedisServiceImpl implements RedisService{
 
-	@Inject
+	@Autowired
 	private JedisPool jedisPool;
 
 	/**

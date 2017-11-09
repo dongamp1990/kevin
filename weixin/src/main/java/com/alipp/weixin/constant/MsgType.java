@@ -2,7 +2,7 @@ package com.alipp.weixin.constant;
 
 
 public enum MsgType {
-	NEWS("news"), TEXT("text"), IMAGE("image"), VOICE("voice"), VIDEO("video"), MUSIC("music"), EVENT("event");
+	NEWS("news"), TEXT("text"), IMAGE("image"), VOICE("voice"), VIDEO("video"), MUSIC("music"), EVENT("event"), LOCATION("location");
 	
 	private String type;
 	
@@ -20,7 +20,7 @@ public enum MsgType {
 				return msgType;
 			}
 		}
-		
+		CommonConstant.LOGGER.warn("cant not found MsgType with {}", type);
 		throw new Exception("cant not found MsgType with " + type);
 	}
 }

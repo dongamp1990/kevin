@@ -3,8 +3,8 @@ package com.alipp.weixin.util;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.util.StringUtils;
 
 public class QueryDefinitionBean {
 
@@ -30,7 +30,7 @@ public class QueryDefinitionBean {
 		String errorDescription = "";
 		if (namedQueryMap != null) {
 			queryStr = namedQueryMap.get(queryName);
-			if(StringUtils.isBlank(queryStr)){
+			if(StringUtils.isEmpty(queryStr)){
 				errorDescription = "Failed to get the query string by name ' "+queryName+"'.";
 				logger.error("Failed to get the query string by name ' "+queryName+"'.");
 				throw new Exception("Failed to get the query string by name ' "+queryName+"'.");

@@ -1,15 +1,17 @@
 package com.alipp.weixin.strategy;
 
-import java.util.Map;
+import org.slf4j.Logger;
 
-public interface EventMessage {
+import com.alipp.weixin.constant.CommonConstant;
+import com.alipp.weixin.constant.MsgType;
+
+public abstract class EventMessage implements Message {
+	protected Logger logger = CommonConstant.LOGGER;
 	
-	public String getEventType();
+	public abstract String getEventType();
 	
-	/**
-	 * 
-	 * @param requestMap
-	 * @return
-	 */
-	public String processEventMessage(Map<String, String> requestMap);
+	@Override
+	public String getMessageType() {
+		return MsgType.EVENT.getTypeStr();
+	}
 }

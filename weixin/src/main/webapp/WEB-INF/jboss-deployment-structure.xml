@@ -23,12 +23,6 @@
 		</exclusions>
 
 		<dependencies>
-			<module name="org.kevin.common">
-				<imports>
-					<include path="META-INF**" />
-					<include path="org**" />
-				</imports>
-			</module>
 		</dependencies>
 
 	</deployment>

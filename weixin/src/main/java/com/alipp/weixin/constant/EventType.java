@@ -10,5 +10,6 @@ public interface EventType {
 	public final String VIEW = "VIEW"; //点击菜单跳转链接时的事件推送 
 	public final String TEMPLATESENDJOBFINISH = "TEMPLATESENDJOBFINISH";//模板短信任务完成事件推送
 	public final String MASSSENDJOBFINISH = "MASSSENDJOBFINISH"; //群发消息结果事件推送
+	public final String TEXT = "text";
 	
 }
