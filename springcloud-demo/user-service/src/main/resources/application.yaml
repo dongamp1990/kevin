@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: user-service
+server:
+  port: 8003
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka,http://localhost:8000/eureka
+  #eureka.server.evictionIntervalTimerInMs=1000
+    healthcheck.enabled: true
+  #eureka.instance.leaseRenewalIntervalInSeconds=3
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 20000
+
+logging:
+  level:
+    root: WARN
+    org.springframework.web: DEBUG
