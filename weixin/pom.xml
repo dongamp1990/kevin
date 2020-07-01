@@ -47,7 +47,7 @@
 
 		<!-- Jboss -->
 		<jboss.resteasy.version>2.3.5.Final</jboss.resteasy.version>
-		<quartz.version>2.2.1</quartz.version>
+		<quartz.version>2.3.2</quartz.version>
 		<mysql.jdbc.version>5.1.6</mysql.jdbc.version>
 
 		<!-- TDD Test -->
