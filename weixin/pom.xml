@@ -52,7 +52,7 @@
 
 		<!-- TDD Test -->
 		<ant.version>1.8.2</ant.version>
-		<junit.version>4.8.2</junit.version>
+		<junit.version>4.13.1</junit.version>
 
 		<!-- Maven test -->
 		<maven.test.skip>false</maven.test.skip>
