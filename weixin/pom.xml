@@ -51,7 +51,7 @@
 		<mysql.jdbc.version>5.1.6</mysql.jdbc.version>
 
 		<!-- TDD Test -->
-		<ant.version>1.8.2</ant.version>
+		<ant.version>1.10.9</ant.version>
 		<junit.version>4.8.2</junit.version>
 
 		<!-- Maven test -->
