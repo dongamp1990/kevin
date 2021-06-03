@@ -14,7 +14,7 @@
 		<!-- xstream-version -->
 		<xstream-version>1.4.8</xstream-version>
 		<!-- httpClient-version -->
-		<httpClient-version>4.5</httpClient-version>
+		<httpClient-version>4.5.13</httpClient-version>
 		<jackson-dataformat.versoin>2.1.4</jackson-dataformat.versoin>
 		<jboss.maven.plugin>7.7.Final</jboss.maven.plugin>
 		<maven-war-plugin>2.1-alpha-1</maven-war-plugin>
