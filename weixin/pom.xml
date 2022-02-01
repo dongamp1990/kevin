@@ -12,7 +12,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maxfuncore.version>1.0</maxfuncore.version>
 		<!-- xstream-version -->
-		<xstream-version>1.4.8</xstream-version>
+		<xstream-version>1.4.19</xstream-version>
 		<!-- httpClient-version -->
 		<httpClient-version>4.5</httpClient-version>
 		<jackson-dataformat.versoin>2.1.4</jackson-dataformat.versoin>
