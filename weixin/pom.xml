@@ -46,7 +46,7 @@
 		<jackson.version>1.9.10</jackson.version>
 
 		<!-- Jboss -->
-		<jboss.resteasy.version>2.3.5.Final</jboss.resteasy.version>
+		<jboss.resteasy.version>3.0.11.Final</jboss.resteasy.version>
 		<quartz.version>2.2.1</quartz.version>
 		<mysql.jdbc.version>5.1.6</mysql.jdbc.version>
 
